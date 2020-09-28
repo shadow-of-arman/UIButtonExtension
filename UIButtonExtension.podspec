@@ -1,0 +1,25 @@
+Pod::Spec.new do |spec|
+
+
+  spec.name         = "UIButtonExtension"
+  spec.version      = "0.0.1"
+  spec.summary      = "Add checkboxes and radio buttons with this library."
+
+  spec.description  = <<-DESC
+  This CocoaPods library allows you to use customizable Radio buttons and checkboxes since Swift's UIKit doesn't support these natively
+                    DESC
+  
+  spec.homepage     = "https://github.com/shadow-of-arman/UIButtonExtension"
+  spec.license      = { :type => "Apache", :file => "LICENSE" }
+  spec.author       = { "Arman" => "shadowofarman@hotmail.com" }
+   
+  spec.ios.deployment_target = "11"
+  spec.swift_version = "5"
+
+  spec.source       = { :git => "https://github.com/shadow-of-arman/UIButtonExtension.git", :tag => "#{spec.version}" }
+
+  spec.sources       = "UIButtonExtension/**/*/xcassets"
+  spec.source_files  = "Classes", "Classes/**/*.{h,m}"
+  spec.exclude_files = "Classes/Exclude"
+
+end
