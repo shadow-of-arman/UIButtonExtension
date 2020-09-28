@@ -16,6 +16,10 @@
 		457EE0AD2521F47D00A9A9AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 457EE0AB2521F47D00A9A9AD /* LaunchScreen.storyboard */; };
 		457EE0B82521F47E00A9A9AD /* UIButtonExtensionExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457EE0B72521F47E00A9A9AD /* UIButtonExtensionExampleTests.swift */; };
 		457EE0C32521F47E00A9A9AD /* UIButtonExtensionExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457EE0C22521F47E00A9A9AD /* UIButtonExtensionExampleUITests.swift */; };
+		457EE0EA2521FE7000A9A9AD /* UICheckboxModern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457EE0E92521FE7000A9A9AD /* UICheckboxModern.swift */; };
+		457EE0F12521FE9400A9A9AD /* UICheckboxClassic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457EE0F02521FE9400A9A9AD /* UICheckboxClassic.swift */; };
+		457EE0FD2521FEBA00A9A9AD /* UIRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457EE0FC2521FEBA00A9A9AD /* UIRadioButton.swift */; };
+		457EE1102522043F00A9A9AD /* Resources.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 457EE10F2522043F00A9A9AD /* Resources.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +65,10 @@
 		457EE0BE2521F47E00A9A9AD /* UIButtonExtensionExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UIButtonExtensionExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		457EE0C22521F47E00A9A9AD /* UIButtonExtensionExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtensionExampleUITests.swift; sourceTree = "<group>"; };
 		457EE0C42521F47E00A9A9AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		457EE0E92521FE7000A9A9AD /* UICheckboxModern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICheckboxModern.swift; sourceTree = "<group>"; };
+		457EE0F02521FE9400A9A9AD /* UICheckboxClassic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICheckboxClassic.swift; sourceTree = "<group>"; };
+		457EE0FC2521FEBA00A9A9AD /* UIRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIRadioButton.swift; sourceTree = "<group>"; };
+		457EE10F2522043F00A9A9AD /* Resources.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Resources.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +140,10 @@
 			children = (
 				457EE0812521F44400A9A9AD /* UIButtonExtension.h */,
 				457EE0822521F44400A9A9AD /* Info.plist */,
+				457EE0FC2521FEBA00A9A9AD /* UIRadioButton.swift */,
+				457EE0E92521FE7000A9A9AD /* UICheckboxModern.swift */,
+				457EE0F02521FE9400A9A9AD /* UICheckboxClassic.swift */,
+				457EE10F2522043F00A9A9AD /* Resources.xcassets */,
 			);
 			path = UIButtonExtension;
 			sourceTree = "<group>";
@@ -289,6 +301,7 @@
 				TargetAttributes = {
 					457EE07D2521F44400A9A9AD = {
 						CreatedOnToolsVersion = 12.0;
+						LastSwiftMigration = 1200;
 					};
 					457EE0862521F44400A9A9AD = {
 						CreatedOnToolsVersion = 12.0;
@@ -333,6 +346,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				457EE1102522043F00A9A9AD /* Resources.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,6 +387,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				457EE0F12521FE9400A9A9AD /* UICheckboxClassic.swift in Sources */,
+				457EE0EA2521FE7000A9A9AD /* UICheckboxModern.swift in Sources */,
+				457EE0FD2521FEBA00A9A9AD /* UIRadioButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -566,8 +583,10 @@
 		457EE0932521F44400A9A9AD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 589RNFRDJ2;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -582,6 +601,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Arman-Zoghi.UIButtonExtension";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -590,8 +610,10 @@
 		457EE0942521F44400A9A9AD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 589RNFRDJ2;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -614,6 +636,7 @@
 		457EE0962521F44400A9A9AD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 589RNFRDJ2;
 				INFOPLIST_FILE = UIButtonExtensionTests/Info.plist;
@@ -632,6 +655,7 @@
 		457EE0972521F44400A9A9AD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 589RNFRDJ2;
 				INFOPLIST_FILE = UIButtonExtensionTests/Info.plist;

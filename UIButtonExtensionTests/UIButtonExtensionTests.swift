@@ -9,8 +9,15 @@ import XCTest
 @testable import UIButtonExtension
 
 class UIButtonExtensionTests: XCTestCase {
+    
+    var radioButton: UIRadioButton!
+    var checkBoxModern: UICheckboxModern!
+    var checkBoxClassic: UICheckboxClassic!
 
     override func setUpWithError() throws {
+        radioButton = UIRadioButton()
+        checkBoxModern = UICheckboxModern()
+        checkBoxClassic = UICheckboxClassic()
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 
