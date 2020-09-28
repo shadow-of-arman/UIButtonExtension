@@ -18,8 +18,7 @@ Pod::Spec.new do |spec|
 
   spec.source       = { :git => "https://github.com/shadow-of-arman/UIButtonExtension.git", :tag => "#{spec.version}" }
 
-  spec.sources       = "UIButtonExtension/**/*/xcassets"
-  spec.source_files  = "Classes", "Classes/**/*.{h,m}"
+  spec.source_files  = "Classes", "Classes/**/*.{h,m}", "UIButtonExtension/**/*/xcassets"
   spec.exclude_files = "Classes/Exclude"
 
 end
