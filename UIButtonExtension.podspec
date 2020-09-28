@@ -2,7 +2,7 @@ Pod::Spec.new do |spec|
 
 
   spec.name         = "UIButtonExtension"
-  spec.version      = "0.1.5"
+  spec.version      = "0.1.51"
   spec.summary      = "Add checkboxes and radio buttons with this library."
 
   spec.description  = <<-DESC
@@ -17,7 +17,6 @@ Pod::Spec.new do |spec|
   spec.swift_version = "5"
 
   spec.source       = { :git => "https://github.com/shadow-of-arman/UIButtonExtension.git", :tag => "#{spec.version}" }
-  spec.source_files = "Classes", "UIButtonExtension/*.{h,m,swift}"
-  spec.resources    = "UIButtonExtension/*.xcassets"
+  spec.source_files = "Classes", "UIButtonExtension/*.{h,m,swift,xcassets}"
 
 end
