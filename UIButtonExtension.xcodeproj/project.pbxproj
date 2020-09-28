@@ -19,7 +19,7 @@
 		457EE0EA2521FE7000A9A9AD /* UICheckboxModern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457EE0E92521FE7000A9A9AD /* UICheckboxModern.swift */; };
 		457EE0F12521FE9400A9A9AD /* UICheckboxClassic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457EE0F02521FE9400A9A9AD /* UICheckboxClassic.swift */; };
 		457EE0FD2521FEBA00A9A9AD /* UIRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457EE0FC2521FEBA00A9A9AD /* UIRadioButton.swift */; };
-		457EE1102522043F00A9A9AD /* Resources.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 457EE10F2522043F00A9A9AD /* Resources.xcassets */; };
+		457EE1102522043F00A9A9AD /* ButtonImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 457EE10F2522043F00A9A9AD /* ButtonImages.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,7 +68,7 @@
 		457EE0E92521FE7000A9A9AD /* UICheckboxModern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICheckboxModern.swift; sourceTree = "<group>"; };
 		457EE0F02521FE9400A9A9AD /* UICheckboxClassic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICheckboxClassic.swift; sourceTree = "<group>"; };
 		457EE0FC2521FEBA00A9A9AD /* UIRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIRadioButton.swift; sourceTree = "<group>"; };
-		457EE10F2522043F00A9A9AD /* Resources.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Resources.xcassets; sourceTree = "<group>"; };
+		457EE10F2522043F00A9A9AD /* ButtonImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ButtonImages.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,7 +143,7 @@
 				457EE0FC2521FEBA00A9A9AD /* UIRadioButton.swift */,
 				457EE0E92521FE7000A9A9AD /* UICheckboxModern.swift */,
 				457EE0F02521FE9400A9A9AD /* UICheckboxClassic.swift */,
-				457EE10F2522043F00A9A9AD /* Resources.xcassets */,
+				457EE10F2522043F00A9A9AD /* ButtonImages.xcassets */,
 			);
 			path = UIButtonExtension;
 			sourceTree = "<group>";
@@ -346,7 +346,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				457EE1102522043F00A9A9AD /* Resources.xcassets in Resources */,
+				457EE1102522043F00A9A9AD /* ButtonImages.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
