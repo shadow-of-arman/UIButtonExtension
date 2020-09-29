@@ -1,5 +1,7 @@
 # UIButtonExtension
 
+![](UIButtonExtensionDemo.gif)
+
 This package includes three components: 
 
 1. UIRadioButton
