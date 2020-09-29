@@ -175,7 +175,9 @@ if checkboxClassic.isSelected == true {
 this is my first ever library, be gentle 😁
 
 Email:        shadowofarman@hotmail.com
+
 Twitter:      [@shadow_of_arman](https://twitter.com/shadow_of_arman)
+
 Instagram: [shadowofarman](https://www.instagram.com/shadowofarman/)
 
 
