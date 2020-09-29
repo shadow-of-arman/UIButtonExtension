@@ -13,12 +13,12 @@ This package includes three components:
 The UIRadioButton instance will have some attributes by default. you can customize these as you wish. to change the size of the button you only need to change the Height of the instance.
 The UIRadioButton is made of two parts, the outer circle and the inner circle for when it's actively selected. to costumize aspects of the button you can use:
 
-`let radioButton = UIRadioButton()
+`let radioButton = UIRadioButton()`
 
 radioButton.color = .red //changes the color of the outer circle to red.
 radioButton.selectedColor = .green //changes the color of the inner circle to green
 radioButton.borderWidth = 5 //changes the width of the outer circle to 5
-radioButton.selectedSize = 0.8 //changes the ratio of the inner circle size to the outer circle, only available from 0 to 1`
+radioButton.selectedSize = 0.8 //changes the ratio of the inner circle size to the outer circle, only available from 0 to 1
 
 The UIRadioButton can take in string to show in 4 corners: 
 
