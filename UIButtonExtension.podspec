@@ -17,6 +17,6 @@ Pod::Spec.new do |spec|
   spec.swift_version = "5"
 
   spec.source       = { :git => "https://github.com/shadow-of-arman/UIButtonExtension.git", :tag => "#{spec.version}" }
-  spec.source_files = "Classes", "UIButtonExtension/*.{h,m,swift}", "UIButtonExtension/*.xcassets"
+  spec.resources = "Classes", "UIButtonExtension/*.{h,m,swift}", "UIButtonExtension/*.xcassets"
 
 end
