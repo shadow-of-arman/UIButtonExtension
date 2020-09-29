@@ -8,15 +8,17 @@ This package includes three components:
 2. UICheckboxModern
 3. UICheckboxClassic
 
-## UIRadioButton( )
+## UIRadioButton
 
 The UIRadioButton instance will have some attributes by default. you can customize these as you wish. to change the size of the button you only need to change the Height of the instance.
 The UIRadioButton is made of two parts, the outer circle and the inner circle for when it's actively selected. to costumize aspects of the button you can use:
 
-1. `.color`         // change the color of the outer circle
-2. selectedColor  // change the color of the inner circle
-3. borderWidth    // change the width of the outer circle 
-4. selectedSize   // change the size of the inner circle, value must be between 0 and 1 
+`let radioButton = UIRadioButton()
+
+radioButton.color = .red //changes the color of the outer circle to red.
+radioButton.selectedColor = .green //changes the color of the inner circle to green
+radioButton.borderWidth = 5 //changes the width of the outer circle to 5
+radioButton.selectedSize = 0.8 //changes the ratio of the inner circle size to the outer circle, only available from 0 to 1`
 
 The UIRadioButton can take in string to show in 4 corners: 
 
@@ -39,7 +41,7 @@ Each instance of the UIRadioButton will have a randomly generated id (NSUUID) wh
 to understand the current status of the button to see wether it's selected or not you can use "isSelected"
 "isSelected" is a read only property and only changes when the button is pressed.
 
-## UICheckboxModern( )
+## UICheckboxModern
 
 The UICheckboxModern instance will have some attributes by default. you can customize these as you wish. to change the size of the button you only need to change the Height of the instance.
 The UICheckboxModern is made of two parts, the containing box and the checkmark for when it's actively selected. to costumize aspects of the button you can use:
@@ -73,7 +75,7 @@ to understand the current status of the button to see wether it's selected or no
 
 when clicked in type 1, the box gets filled by color and the checkmark resides inside the container box.
 
-## UICheckboxClassic( )
+## UICheckboxClassic
 
 The UICheckboxClassic instance will have some attributes by default. you can customize these as you wish. to change the size of the button you only need to change the Height of the instance.
 The UICheckboxClassic is made of two parts, the containing box and the checkmark for when it's actively selected. to costumize aspects of the button you can use:
