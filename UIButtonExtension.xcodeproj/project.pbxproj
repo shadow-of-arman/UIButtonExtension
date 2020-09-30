@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		454B891F25250DE10031EFA9 /* UIButtonExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 457EE07E2521F44400A9A9AD /* UIButtonExtension.framework */; };
+		454B892025250DE20031EFA9 /* UIButtonExtension.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 457EE07E2521F44400A9A9AD /* UIButtonExtension.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		457EE0882521F44400A9A9AD /* UIButtonExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 457EE07E2521F44400A9A9AD /* UIButtonExtension.framework */; };
 		457EE08D2521F44400A9A9AD /* UIButtonExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457EE08C2521F44400A9A9AD /* UIButtonExtensionTests.swift */; };
 		457EE08F2521F44400A9A9AD /* UIButtonExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 457EE0812521F44400A9A9AD /* UIButtonExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -23,6 +25,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		454B892125250DE20031EFA9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 457EE0752521F44400A9A9AD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 457EE07D2521F44400A9A9AD;
+			remoteInfo = UIButtonExtension;
+		};
 		457EE0892521F44400A9A9AD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 457EE0752521F44400A9A9AD /* Project object */;
@@ -45,6 +54,20 @@
 			remoteInfo = UIButtonExtensionExample;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		454B892325250DE20031EFA9 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				454B892025250DE20031EFA9 /* UIButtonExtension.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		457EE07E2521F44400A9A9AD /* UIButtonExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIButtonExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,6 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				454B891F25250DE10031EFA9 /* UIButtonExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +135,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		454B891E25250DE10031EFA9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		457EE0742521F44400A9A9AD = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +151,7 @@
 				457EE0B62521F47E00A9A9AD /* UIButtonExtensionExampleTests */,
 				457EE0C12521F47E00A9A9AD /* UIButtonExtensionExampleUITests */,
 				457EE07F2521F44400A9A9AD /* Products */,
+				454B891E25250DE10031EFA9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -244,10 +276,12 @@
 				457EE09A2521F47B00A9A9AD /* Sources */,
 				457EE09B2521F47B00A9A9AD /* Frameworks */,
 				457EE09C2521F47B00A9A9AD /* Resources */,
+				454B892325250DE20031EFA9 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				454B892225250DE20031EFA9 /* PBXTargetDependency */,
 			);
 			name = UIButtonExtensionExample;
 			productName = UIButtonExtensionExample;
@@ -429,6 +463,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		454B892225250DE20031EFA9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 457EE07D2521F44400A9A9AD /* UIButtonExtension */;
+			targetProxy = 454B892125250DE20031EFA9 /* PBXContainerItemProxy */;
+		};
 		457EE08A2521F44400A9A9AD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 457EE07D2521F44400A9A9AD /* UIButtonExtension */;
@@ -510,7 +549,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -568,7 +607,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -679,7 +718,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 589RNFRDJ2;
 				INFOPLIST_FILE = UIButtonExtensionExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -699,7 +738,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 589RNFRDJ2;
 				INFOPLIST_FILE = UIButtonExtensionExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

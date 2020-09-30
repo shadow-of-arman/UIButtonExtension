@@ -17,7 +17,7 @@ open class UIRadioButton: UIView {
     fileprivate  var innerConstraintWidth  : NSLayoutConstraint? //required inner circle width constraints to activate and deactivate at will.
     fileprivate  var innerConstraintHeight : NSLayoutConstraint? //required inner circle height constraints to activate and deactivate at will.
     fileprivate  var firstPressed = false // indicating if the button has been pressed once since initialized, used for the animation - IGNORE THIS.
-    open var borderWidth: CGFloat = 3 // by default the width for the border is 3.
+    open var borderWidth: CGFloat! // by default the width for the border is 3.
     open var color: UIColor = UIColor.systemBlue // by default the color is system blue.
     open var selectedColor: UIColor = UIColor.systemBlue // the color of the inner circle
     open var fontSize: CGFloat! // text font changes dynamically based on the radio button height.
@@ -52,6 +52,7 @@ open class UIRadioButton: UIView {
         //outer circle
         outerCircle.clipsToBounds = true
         outerCircle.layer.borderColor  = self.color.cgColor
+        borderWidth = outerCircle.frame.height / 9
         outerCircle.layer.borderWidth  = borderWidth
         outerCircle.layer.cornerRadius = outerCircle.bounds.width / 2
         //inner circle
@@ -196,7 +197,7 @@ open class UIRadioButton: UIView {
     }
     
     fileprivate func deselectAnimate() {
-        UIView.animate(withDuration: 0.3, delay: 0.2, usingSpringWithDamping: 0.2, initialSpringVelocity: 3, options: .curveEaseIn, animations: {
+        UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 3, options: .curveEaseIn, animations: {
             self.layoutIfNeeded()
         }, completion: {
             finished in
