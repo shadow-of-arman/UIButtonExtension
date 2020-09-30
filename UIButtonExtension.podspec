@@ -2,7 +2,7 @@ Pod::Spec.new do |spec|
 
 
   spec.name         = "UIButtonExtension"
-  spec.version      = "0.2.0"
+  spec.version      = "0.2.1"
   spec.summary      = "Add checkboxes and radio buttons with this library."
 
   spec.description  = <<-DESC
