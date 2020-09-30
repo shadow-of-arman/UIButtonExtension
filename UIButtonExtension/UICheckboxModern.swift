@@ -172,7 +172,7 @@ open class UICheckboxModern: UIView {
     }
     
     fileprivate func selectAnimate() {
-        UIView.animate(withDuration: 0.4, delay: 0.2, usingSpringWithDamping: 0.5, initialSpringVelocity: 45, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 45, options: .curveEaseInOut, animations: {
             self.layoutIfNeeded()
         }, completion: nil)
     }
@@ -189,7 +189,7 @@ open class UICheckboxModern: UIView {
     }
     
     fileprivate func deselectAnimate() {
-        UIView.animate(withDuration: 0.3, delay: 0.05, usingSpringWithDamping: 0.2, initialSpringVelocity: 3, options: .curveEaseIn, animations: {
+        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 3, options: .curveEaseIn, animations: {
             self.layoutIfNeeded()
         }, completion: {
             finished in
