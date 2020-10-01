@@ -13,7 +13,7 @@ open class UICheckboxModern: UIView {
     fileprivate var box : UIButton! // the outer box
     fileprivate var checkmark : UIImageView! // the check view
     fileprivate var btnText = UILabel() // text label if needed.
-    private(set) var isSelected = false // determines wether the checkbox has been checked or not.
+    open private(set) var isSelected = false // determines wether the checkbox has been checked or not.
     fileprivate var innerConstraintWidth  : NSLayoutConstraint? //required checkmark width constraints to activate and deactivate at will.
     fileprivate var innerConstraintHeight : NSLayoutConstraint? //required checkmark height constraints to activate and deactivate at will.
     fileprivate var firstPressed = false // indicating if the button has been pressed once since initialized, used for the animation - IGNORE THIS.
