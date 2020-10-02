@@ -10,22 +10,36 @@ import UIKit
 
 open class UIRadioButton: UIView {
     
-    fileprivate  var outerCircle : UIButton! // the outer circle which shows the Radio button it self.
+    open var button : UIButton! // the outer circle which shows the Radio button it self.
     fileprivate  var innerCircle : UIImageView! // the inner circle which filles if selected.
     fileprivate  var btnText = UILabel() // text label if needed.
-    open private(set) var isSelected = false // determines wether the Radio button has been selected or not.
     fileprivate  var innerConstraintWidth  : NSLayoutConstraint? //required inner circle width constraints to activate and deactivate at will.
     fileprivate  var innerConstraintHeight : NSLayoutConstraint? //required inner circle height constraints to activate and deactivate at will.
     fileprivate  var firstPressed = false // indicating if the button has been pressed once since initialized, used for the animation - IGNORE THIS.
+    fileprivate  var neverSelected = false
     open var borderWidth: CGFloat! // by default the width for the border is 3.
     open var color: UIColor = UIColor.systemBlue // by default the color is system blue.
     open var selectedColor: UIColor = UIColor.systemBlue // the color of the inner circle
     open var fontSize: CGFloat! // text font changes dynamically based on the radio button height.
     open var font: UIFont!
-    open var textColor: UIColor = .black // text color is black by default.
-    open var id = NSUUID().uuidString // random ID for each radio button created
+    open var textColor: UIColor = .black  // text color is black by default.
+    open var selectedSize: CGFloat = 0.5 // change the size of the inner circle
+    open var textDistance: CGFloat = 10 // change the distance between the text label and the button
     open var animate = true // allow animation for selecting and de selecting?
-    open var selectedSize: CGFloat = 0.5
+    open var id = NSUUID().uuidString  // random ID for each radio button created
+    open var family: [UIRadioButton] = [] // radio buttons releated to each other
+    
+    open var isSelected = false {     // determines wether the Radio button has been selected or not.
+        didSet{
+            print(isSelected)
+            if isSelected == true {
+                relativeSelection()
+                select()
+            } else {
+                deselect()
+            }
+        }
+    }
 
 //MARK: init
     override init(frame: CGRect) {
@@ -34,6 +48,7 @@ open class UIRadioButton: UIView {
         configOuterCircleConstraints()
         configInnerCircle()
         configInnerCircleConstraints()
+        family.append(self)
     }
     
     override open func layoutSubviews() {
@@ -50,11 +65,11 @@ open class UIRadioButton: UIView {
 //MARK: configuration functions
     fileprivate func radioButtonConfig() {
         //outer circle
-        outerCircle.clipsToBounds = true
-        outerCircle.layer.borderColor  = self.color.cgColor
-        borderWidth = outerCircle.frame.height / 9
-        outerCircle.layer.borderWidth  = borderWidth
-        outerCircle.layer.cornerRadius = outerCircle.bounds.width / 2
+        button.clipsToBounds = true
+        button.layer.borderColor  = self.color.cgColor
+        borderWidth = button.frame.height / 9
+        button.layer.borderWidth  = borderWidth
+        button.layer.cornerRadius = button.bounds.width / 2
         //inner circle
         innerCircle.clipsToBounds = true
         innerCircle.backgroundColor    = self.selectedColor
@@ -63,16 +78,16 @@ open class UIRadioButton: UIView {
     
     //outer circle:
     fileprivate func configOuterCircle() {
-        outerCircle = UIButton(frame: CGRect.zero)
-        self.addSubview(outerCircle)
-        outerCircle.addTarget(self, action: #selector(radioButtonClicked(_:)), for: .touchUpInside)
+        button = UIButton(frame: CGRect.zero)
+        self.addSubview(button)
+        button.addTarget(self, action: #selector(radioButtonClicked(_:)), for: .touchUpInside)
     }
     fileprivate func configOuterCircleConstraints() {
-        outerCircle.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint(item: self.outerCircle!, attribute: .centerY, relatedBy: .equal, toItem: self,             attribute: .centerY, multiplier: 1, constant: 0).isActive = true
-        NSLayoutConstraint(item: self.outerCircle!, attribute: .centerX, relatedBy: .equal, toItem: self,             attribute: .centerX, multiplier: 1, constant: 0).isActive = true
-        NSLayoutConstraint(item: self.outerCircle!, attribute: .height,  relatedBy: .equal, toItem: self,             attribute: .height,  multiplier: 1, constant: 0).isActive = true
-        NSLayoutConstraint(item: self.outerCircle!, attribute: .width,   relatedBy: .equal, toItem: self.outerCircle, attribute: .height,  multiplier: 1, constant: 0).isActive = true
+        button.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint(item: self.button!, attribute: .centerY, relatedBy: .equal, toItem: self,             attribute: .centerY, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: self.button!, attribute: .centerX, relatedBy: .equal, toItem: self,             attribute: .centerX, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: self.button!, attribute: .height,  relatedBy: .equal, toItem: self,             attribute: .height,  multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: self.button!, attribute: .width,   relatedBy: .equal, toItem: self.button,      attribute: .height,  multiplier: 1, constant: 0).isActive = true
     }
     
     //inner circle:
@@ -82,15 +97,15 @@ open class UIRadioButton: UIView {
     }
     fileprivate func configInnerCircleConstraints() {
         innerCircle.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint(item: self.innerCircle!, attribute: .centerY, relatedBy: .equal, toItem: self.outerCircle, attribute: .centerY, multiplier: 1,   constant: 0).isActive = true
-        NSLayoutConstraint(item: self.innerCircle!, attribute: .centerX, relatedBy: .equal, toItem: self.outerCircle, attribute: .centerX, multiplier: 1,   constant: 0).isActive = true
+        NSLayoutConstraint(item: self.innerCircle!, attribute: .centerY, relatedBy: .equal, toItem: self.button, attribute: .centerY, multiplier: 1,   constant: 0).isActive = true
+        NSLayoutConstraint(item: self.innerCircle!, attribute: .centerX, relatedBy: .equal, toItem: self.button, attribute: .centerX, multiplier: 1,   constant: 0).isActive = true
     }
     fileprivate func selectedConstraint() {
         if firstPressed == true {
             NSLayoutConstraint.deactivate([innerConstraintWidth!, innerConstraintHeight!]) //deactivates the secondary constraints only if it's not the first time
         }
-        innerConstraintWidth  = NSLayoutConstraint(item: self.innerCircle!, attribute: .width,  relatedBy: .equal, toItem: self.outerCircle, attribute: .width,   multiplier: selectedSize, constant: 0)
-        innerConstraintHeight = NSLayoutConstraint(item: self.innerCircle!, attribute: .height, relatedBy: .equal, toItem: self.innerCircle, attribute: .width,   multiplier: 1,   constant: 0)
+        innerConstraintWidth  = NSLayoutConstraint(item: self.innerCircle!, attribute: .width,  relatedBy: .equal, toItem: self.button,      attribute: .width,   multiplier: selectedSize, constant: 0)
+        innerConstraintHeight = NSLayoutConstraint(item: self.innerCircle!, attribute: .height, relatedBy: .equal, toItem: self.innerCircle, attribute: .width,   multiplier: 1,            constant: 0)
         NSLayoutConstraint.activate([innerConstraintWidth!, innerConstraintHeight!])
         firstPressed = true // this code has ran through for the first time
     }
@@ -108,6 +123,24 @@ open class UIRadioButton: UIView {
         }
         if selectedSize < 0 {
             selectedSize = 0.1
+        }
+    }
+    
+    //relate buttons
+    open func relate(otherUIRadioButtons: [UIRadioButton]) {
+        family.append(contentsOf: otherUIRadioButtons)
+        family = family.filter{$0 != self}
+        print(family)
+    }
+    
+    fileprivate func relativeSelection() {
+        var x = 0
+        let limit = family.count
+        while x != limit {
+            if family[x].isSelected == true {
+                family[x].isSelected = false
+            }
+            x += 1
         }
     }
     
@@ -137,7 +170,7 @@ open class UIRadioButton: UIView {
        }
     
     fileprivate func textConfig(){
-        fontSize = outerCircle.frame.height / 1.5
+        fontSize = button.frame.height / 1.5
         btnText.font = font
         btnText.font = .systemFont(ofSize: self.fontSize)
         btnText.textColor = self.textColor
@@ -146,28 +179,28 @@ open class UIRadioButton: UIView {
     //text constraints
     fileprivate func leftModeConstraints() {
         btnText.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint(item: btnText, attribute: .top,    relatedBy: .equal, toItem: outerCircle, attribute: .top,    multiplier: 1, constant: 0).isActive   = true
-        NSLayoutConstraint(item: btnText, attribute: .bottom, relatedBy: .equal, toItem: outerCircle, attribute: .bottom, multiplier: 1, constant: 0).isActive   = true
-        NSLayoutConstraint(item: btnText, attribute: .right,  relatedBy: .equal, toItem: outerCircle, attribute: .left,   multiplier: 1, constant: -10).isActive = true
+        NSLayoutConstraint(item: btnText, attribute: .top,    relatedBy: .equal, toItem: button, attribute: .top,    multiplier: 1, constant: 0).isActive             = true
+        NSLayoutConstraint(item: btnText, attribute: .bottom, relatedBy: .equal, toItem: button, attribute: .bottom, multiplier: 1, constant: 0).isActive             = true
+        NSLayoutConstraint(item: btnText, attribute: .right,  relatedBy: .equal, toItem: button, attribute: .left,   multiplier: 1, constant: -textDistance).isActive = true
     }
     
     fileprivate func rightModeConstraints() {
         btnText.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint(item: btnText, attribute: .top,    relatedBy: .equal, toItem: outerCircle, attribute: .top,    multiplier: 1, constant: 0).isActive  = true
-        NSLayoutConstraint(item: btnText, attribute: .bottom, relatedBy: .equal, toItem: outerCircle, attribute: .bottom, multiplier: 1, constant: 0).isActive  = true
-        NSLayoutConstraint(item: btnText, attribute: .left,   relatedBy: .equal, toItem: outerCircle, attribute: .right,  multiplier: 1, constant: 10).isActive = true
+        NSLayoutConstraint(item: btnText, attribute: .top,    relatedBy: .equal, toItem: button, attribute: .top,    multiplier: 1, constant: 0).isActive            = true
+        NSLayoutConstraint(item: btnText, attribute: .bottom, relatedBy: .equal, toItem: button, attribute: .bottom, multiplier: 1, constant: 0).isActive            = true
+        NSLayoutConstraint(item: btnText, attribute: .left,   relatedBy: .equal, toItem: button, attribute: .right,  multiplier: 1, constant: textDistance).isActive = true
     }
     
     fileprivate func topModeConstraints() {
         btnText.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint(item: btnText, attribute: .bottom,  relatedBy: .equal, toItem: outerCircle, attribute: .top,     multiplier: 1, constant: -10).isActive = true
-        NSLayoutConstraint(item: btnText, attribute: .centerX, relatedBy: .equal, toItem: outerCircle, attribute: .centerX, multiplier: 1, constant: 0).isActive   = true
+        NSLayoutConstraint(item: btnText, attribute: .bottom,  relatedBy: .equal, toItem: button, attribute: .top,     multiplier: 1, constant: -textDistance).isActive = true
+        NSLayoutConstraint(item: btnText, attribute: .centerX, relatedBy: .equal, toItem: button, attribute: .centerX, multiplier: 1, constant: 0).isActive             = true
     }
     
     fileprivate func bottomModeConstraints() {
         btnText.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint(item: btnText, attribute: .top,     relatedBy: .equal, toItem: outerCircle, attribute: .bottom,  multiplier: 1, constant: 10).isActive = true
-        NSLayoutConstraint(item: btnText, attribute: .centerX, relatedBy: .equal, toItem: outerCircle, attribute: .centerX, multiplier: 1, constant: 0).isActive  = true
+        NSLayoutConstraint(item: btnText, attribute: .top,     relatedBy: .equal, toItem: button, attribute: .bottom,  multiplier: 1, constant: textDistance).isActive = true
+        NSLayoutConstraint(item: btnText, attribute: .centerX, relatedBy: .equal, toItem: button, attribute: .centerX, multiplier: 1, constant: 0).isActive            = true
     }
     //select function and it's animation
     fileprivate func select() {
@@ -176,7 +209,6 @@ open class UIRadioButton: UIView {
         if animate == true {
             selectAnimate()
         }
-        isSelected = true
     }
     
     fileprivate func selectAnimate() {
@@ -193,7 +225,6 @@ open class UIRadioButton: UIView {
         } else {
             self.innerCircle.isHidden = true
         }
-        isSelected = false
     }
     
     fileprivate func deselectAnimate() {
@@ -209,10 +240,9 @@ open class UIRadioButton: UIView {
     // method for when the radio button is clicked:
     @objc func radioButtonClicked(_ sender: UIButton) {
         if isSelected == false {
-            select()
-        } else {
-            deselect()
+            isSelected = true
         }
+        
         print("button with ID:  \(id) is selected? \(isSelected)")
     }
     
