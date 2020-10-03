@@ -40,7 +40,7 @@ open class UIRadioButton: UIView {
         }
     }
 
-//MARK: init
+//MARK: - init
     override init(frame: CGRect) {
         super.init(frame: frame)
         configOuterCircle()
@@ -61,7 +61,7 @@ open class UIRadioButton: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-//MARK: configuration functions
+//MARK: - configuration functions
     fileprivate func radioButtonConfig() {
         //outer circle
         button.clipsToBounds = true
@@ -130,6 +130,7 @@ open class UIRadioButton: UIView {
             selectedSize = 0.1
         }
     }
+    
 //MARK: - relationship functions
     //relate buttons
     open func relate(otherUIRadioButtons: [UIRadioButton]) {
@@ -152,7 +153,8 @@ open class UIRadioButton: UIView {
             x += 1
         }
     }
-//MARK: Text
+    
+//MARK: - Text
     //text configs:
     open func leftText(_ text: String) {
         btnText.text = text
@@ -247,7 +249,7 @@ open class UIRadioButton: UIView {
         })
     }
     
-//MARK: objc
+//MARK: - objc
     // method for when the radio button is clicked:
     @objc func radioButtonClicked(_ sender: UIButton) {
         if isSelected == false {
