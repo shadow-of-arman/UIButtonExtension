@@ -28,7 +28,6 @@ open class UIRadioButton: UIView {
     open var animate = true // allow animation for selecting and de selecting?
     open var id = NSUUID().uuidString  // random ID for each radio button created
     open var family: [UIRadioButton] = [] // radio buttons releated to each other
-    
     open var isSelected = false {     // determines wether the Radio button has been selected or not.
         didSet{
             print(isSelected)
@@ -138,7 +137,6 @@ open class UIRadioButton: UIView {
         if otherUIRadioButtons.contains(self) {
             family = family.filter{$0 != self}
         }
-        print(family)
     }
     
     fileprivate func relativeSelection() {
