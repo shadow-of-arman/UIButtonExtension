@@ -9,9 +9,9 @@ import UIKit
 import UIButtonExtension
 
 class ViewController: UIViewController {
-//    let radioButton1 = UIRadioButton()
-//    let radioButton2 = UIRadioButton()
-//    let radioButton3 = UIRadioButton()
+    let radioButton1 = UIRadioButton()
+    let radioButton2 = UIRadioButton()
+    let radioButton3 = UIRadioButton()
 
     var radioButtons: [UIRadioButton] = [] {
         didSet {
@@ -38,16 +38,16 @@ class ViewController: UIViewController {
         }
 
 //        view.addSubview(checkboxModern1)
-//        view.addSubview(radioButton1)
-//        view.addSubview(radioButton2)
-//        view.addSubview(radioButton3)
+        view.addSubview(radioButton1)
+        view.addSubview(radioButton2)
+        view.addSubview(radioButton3)
         view.addSubview(checkboxModern2)
         view.addSubview(checkboxClassic)
 
 //        checkboxModern1.translatesAutoresizingMaskIntoConstraints = false
-//        radioButton1.translatesAutoresizingMaskIntoConstraints = false
-//        radioButton2.translatesAutoresizingMaskIntoConstraints = false
-//        radioButton3.translatesAutoresizingMaskIntoConstraints = false
+        radioButton1.translatesAutoresizingMaskIntoConstraints = false
+        radioButton2.translatesAutoresizingMaskIntoConstraints = false
+        radioButton3.translatesAutoresizingMaskIntoConstraints = false
         checkboxModern2.translatesAutoresizingMaskIntoConstraints = false
         checkboxClassic.translatesAutoresizingMaskIntoConstraints = false
         
@@ -86,8 +86,23 @@ class ViewController: UIViewController {
         radioButtons[2].relate(otherUIRadioButtons: radioButtons)
         radioButtons[3].relate(otherUIRadioButtons: radioButtons)
         
-//        radioButton1.relate(otherUIRadioButtons: [radioButton2, radioButton3])
-//        radioButton2.relate(otherUIRadioButtons: [radioButton1, radioButton3])
+        NSLayoutConstraint(item: radioButton1, attribute: .centerY, relatedBy: .equal, toItem: self.view,        attribute: .centerY, multiplier: 0.3, constant: 0).isActive = true
+        NSLayoutConstraint(item: radioButton1, attribute: .centerX, relatedBy: .equal, toItem: self.view,        attribute: .centerX, multiplier: 0.35,   constant: 0).isActive = true
+        NSLayoutConstraint(item: radioButton1, attribute: .width,   relatedBy: .equal, toItem: self.view,        attribute: .width,   multiplier: 0.3, constant: 0).isActive = true
+        NSLayoutConstraint(item: radioButton1, attribute: .height,  relatedBy: .equal, toItem: self.radioButton1, attribute: .width,   multiplier: 1,   constant: 0).isActive = true
+        
+        NSLayoutConstraint(item: radioButton2, attribute: .centerY, relatedBy: .equal, toItem: self.view,            attribute: .centerY, multiplier: 0.75, constant: 0).isActive = true
+        NSLayoutConstraint(item: radioButton2, attribute: .centerX, relatedBy: .equal, toItem: self.view,            attribute: .centerX, multiplier: 0.35,    constant: 0).isActive = true
+        NSLayoutConstraint(item: radioButton2, attribute: .width,   relatedBy: .equal, toItem: self.view,            attribute: .width,   multiplier: 0.3,  constant: 0).isActive = true
+        NSLayoutConstraint(item: radioButton2, attribute: .height,  relatedBy: .equal, toItem: self.radioButton2, attribute: .width,   multiplier: 1,    constant: 0).isActive = true
+        
+        NSLayoutConstraint(item: radioButton3, attribute: .centerY, relatedBy: .equal, toItem: self.view,            attribute: .bottom,  multiplier: 0.6, constant: 0).isActive = true
+        NSLayoutConstraint(item: radioButton3, attribute: .centerX, relatedBy: .equal, toItem: self.view,            attribute: .centerX, multiplier: 0.35,   constant: 0).isActive = true
+        NSLayoutConstraint(item: radioButton3, attribute: .width,   relatedBy: .equal, toItem: self.view,            attribute: .width,   multiplier: 0.3, constant: 0).isActive = true
+        NSLayoutConstraint(item: radioButton3, attribute: .height,  relatedBy: .equal, toItem: self.radioButton3, attribute: .width,   multiplier: 1,   constant: 0).isActive = true
+        
+        radioButton1.relate(otherUIRadioButtons: [radioButton2, radioButton1])
+        radioButton2.relate(otherUIRadioButtons: [radioButton1, radioButton2])
 //        radioButton3.relate(otherUIRadioButtons: [radioButton1, radioButton2])
         
     }

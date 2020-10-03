@@ -129,12 +129,17 @@ open class UIRadioButton: UIView {
     //relate buttons
     open func relate(otherUIRadioButtons: [UIRadioButton]) {
         family.append(contentsOf: otherUIRadioButtons)
-        family = family.filter{$0 != self}
+        if otherUIRadioButtons.contains(self) {
+            family = family.filter{$0 != self}
+        }
         print(family)
     }
     
     fileprivate func relativeSelection() {
         var x = 0
+        if family.contains(self) {
+            x = 1
+        }
         let limit = family.count
         while x != limit {
             if family[x].isSelected == true {
