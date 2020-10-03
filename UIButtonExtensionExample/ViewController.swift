@@ -104,8 +104,16 @@ class ViewController: UIViewController {
         radioButton1.relate(otherUIRadioButtons: [radioButton2, radioButton1])
         radioButton2.relate(otherUIRadioButtons: [radioButton1, radioButton2])
 //        radioButton3.relate(otherUIRadioButtons: [radioButton1, radioButton2])
+        radioButton2.button.addTarget(self, action: #selector(testing(_:)), for: .touchUpInside)
+        radioButton2.color = .systemGreen
+        radioButton2.selectedColor = .systemGreen
         
+        radioButton3.cornerRadius = 40
+//        radioButton3.borderWidth = 50
     }
 
+    @objc func testing(_ sender: UIButton) {
+        print("yep this shit is working")
+    }
 }
 

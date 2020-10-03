@@ -10,7 +10,7 @@ import UIKit
 
 open class UICheckboxModern: UIView {
     
-    fileprivate var box : UIButton! // the outer box
+    open var button : UIButton! // the outer box. use this to addTarget
     fileprivate var checkmark : UIImageView! // the check view
     fileprivate var btnText = UILabel() // text label if needed.
     fileprivate var innerConstraintWidth  : NSLayoutConstraint? //required checkmark width constraints to activate and deactivate at will.
@@ -22,9 +22,9 @@ open class UICheckboxModern: UIView {
     open var color: UIColor = UIColor.darkGray // by default the color is system blue.
     open var selectedColor: UIColor = UIColor.systemBlue // the color of the inner check mark
     open var fontSize: CGFloat! // text font changes dynamically based on the checkbox button height.
-    open var font: UIFont!
+    open var font: UIFont! // the font for when you need a text next to the button.
     open var textColor: UIColor = .black // text color is black by default.
-    open var id = NSUUID().uuidString
+    open var id = NSUUID().uuidString // random ID for each radio button created
     open var animate = true // allow animation for selecting and de-selecting?
     open var checkedImage = "check1"
     open var cornerRadius: CGFloat = 5 // the cornerRadius for the box
@@ -52,11 +52,11 @@ open class UICheckboxModern: UIView {
     
 //MARK: configuration functions
     fileprivate func checkboxConfig() {
-        box.clipsToBounds = true
-        box.layer.borderColor  = self.color.cgColor
-        borderWidth = box.frame.height / 9
-        box.layer.borderWidth  = borderWidth
-        box.layer.cornerRadius = cornerRadius
+        button.clipsToBounds = true
+        button.layer.borderColor  = self.color.cgColor
+        borderWidth = button.frame.height / 9
+        button.layer.borderWidth  = borderWidth
+        button.layer.cornerRadius = cornerRadius
         
         checkmark.clipsToBounds = true
         checkmark.backgroundColor = self.selectedColor
@@ -65,16 +65,16 @@ open class UICheckboxModern: UIView {
     
     //box:
     fileprivate func configBox() {
-        box = UIButton(frame: CGRect.zero)
-        self.addSubview(box)
-        box.addTarget(self, action: #selector(radioButtonClicked(_:)), for: .touchUpInside)
+        button = UIButton(frame: CGRect.zero)
+        self.addSubview(button)
+        button.addTarget(self, action: #selector(radioButtonClicked(_:)), for: .touchUpInside)
     }
     fileprivate func configBoxConstraints() {
-        box.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint(item: self.box!, attribute: .centerY, relatedBy: .equal, toItem: self,             attribute: .centerY, multiplier: 1, constant: 0).isActive = true
-        NSLayoutConstraint(item: self.box!, attribute: .centerX, relatedBy: .equal, toItem: self,             attribute: .centerX, multiplier: 1, constant: 0).isActive = true
-        NSLayoutConstraint(item: self.box!, attribute: .height,  relatedBy: .equal, toItem: self,             attribute: .height,  multiplier: 1, constant: 0).isActive = true
-        NSLayoutConstraint(item: self.box!, attribute: .width,   relatedBy: .equal, toItem: self.box, attribute: .height,  multiplier: 1, constant: 0).isActive = true
+        button.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint(item: self.button!, attribute: .centerY, relatedBy: .equal, toItem: self,             attribute: .centerY, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: self.button!, attribute: .centerX, relatedBy: .equal, toItem: self,             attribute: .centerX, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: self.button!, attribute: .height,  relatedBy: .equal, toItem: self,             attribute: .height,  multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: self.button!, attribute: .width,   relatedBy: .equal, toItem: self.button, attribute: .height,  multiplier: 1, constant: 0).isActive = true
     }
     
     //checkmark:
@@ -85,8 +85,8 @@ open class UICheckboxModern: UIView {
     }
     fileprivate func configCheckmarkConstraints() {
         checkmark.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint(item: self.checkmark!, attribute: .centerY, relatedBy: .equal, toItem: self.box, attribute: .centerY, multiplier: 1,   constant: 0).isActive = true
-        NSLayoutConstraint(item: self.checkmark!, attribute: .centerX, relatedBy: .equal, toItem: self.box, attribute: .centerX, multiplier: 1,   constant: 0).isActive = true
+        NSLayoutConstraint(item: self.checkmark!, attribute: .centerY, relatedBy: .equal, toItem: self.button, attribute: .centerY, multiplier: 1,   constant: 0).isActive = true
+        NSLayoutConstraint(item: self.checkmark!, attribute: .centerX, relatedBy: .equal, toItem: self.button, attribute: .centerX, multiplier: 1,   constant: 0).isActive = true
     }
     fileprivate func selectedConstraint() {
         if firstPressed == true {
@@ -130,7 +130,7 @@ open class UICheckboxModern: UIView {
        }
     
     fileprivate func textConfig(){
-        fontSize = box.frame.height * 1.2
+        fontSize = button.frame.height * 1.2
         btnText.font = font
         btnText.font = .systemFont(ofSize: self.fontSize)
         btnText.textColor = self.textColor
@@ -139,28 +139,28 @@ open class UICheckboxModern: UIView {
     //text constraints
     fileprivate func leftModeConstraints() {
         btnText.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint(item: btnText, attribute: .centerY, relatedBy: .equal, toItem: box, attribute: .centerY, multiplier: 0.9, constant: 0).isActive             = true
-        NSLayoutConstraint(item: btnText, attribute: .height,  relatedBy: .equal, toItem: box, attribute: .height,  multiplier: 1,   constant: 0).isActive             = true
-        NSLayoutConstraint(item: btnText, attribute: .right,   relatedBy: .equal, toItem: box, attribute: .left,    multiplier: 1,   constant: -textDistance).isActive = true
+        NSLayoutConstraint(item: btnText, attribute: .centerY, relatedBy: .equal, toItem: button, attribute: .centerY, multiplier: 0.9, constant: 0).isActive             = true
+        NSLayoutConstraint(item: btnText, attribute: .height,  relatedBy: .equal, toItem: button, attribute: .height,  multiplier: 1,   constant: 0).isActive             = true
+        NSLayoutConstraint(item: btnText, attribute: .right,   relatedBy: .equal, toItem: button, attribute: .left,    multiplier: 1,   constant: -textDistance).isActive = true
     }
     
     fileprivate func rightModeConstraints() {
         btnText.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint(item: btnText, attribute: .centerY, relatedBy: .equal, toItem: box, attribute: .centerY, multiplier: 0.9, constant: 0).isActive            = true
-        NSLayoutConstraint(item: btnText, attribute: .height,  relatedBy: .equal, toItem: box, attribute: .height,  multiplier: 1,   constant: 0).isActive            = true
-        NSLayoutConstraint(item: btnText, attribute: .left,    relatedBy: .equal, toItem: box, attribute: .right,   multiplier: 1,   constant: textDistance).isActive = true
+        NSLayoutConstraint(item: btnText, attribute: .centerY, relatedBy: .equal, toItem: button, attribute: .centerY, multiplier: 0.9, constant: 0).isActive            = true
+        NSLayoutConstraint(item: btnText, attribute: .height,  relatedBy: .equal, toItem: button, attribute: .height,  multiplier: 1,   constant: 0).isActive            = true
+        NSLayoutConstraint(item: btnText, attribute: .left,    relatedBy: .equal, toItem: button, attribute: .right,   multiplier: 1,   constant: textDistance).isActive = true
     }
     
     fileprivate func topModeConstraints() {
         btnText.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint(item: btnText, attribute: .bottom,  relatedBy: .equal, toItem: box, attribute: .top,     multiplier: 1, constant: -textDistance).isActive = true
-        NSLayoutConstraint(item: btnText, attribute: .centerX, relatedBy: .equal, toItem: box, attribute: .centerX, multiplier: 1, constant: 0).isActive             = true
+        NSLayoutConstraint(item: btnText, attribute: .bottom,  relatedBy: .equal, toItem: button, attribute: .top,     multiplier: 1, constant: -textDistance).isActive = true
+        NSLayoutConstraint(item: btnText, attribute: .centerX, relatedBy: .equal, toItem: button, attribute: .centerX, multiplier: 1, constant: 0).isActive             = true
     }
     
     fileprivate func bottomModeConstraints() {
         btnText.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint(item: btnText, attribute: .top,     relatedBy: .equal, toItem: box, attribute: .bottom,  multiplier: 1, constant: textDistance).isActive = true
-        NSLayoutConstraint(item: btnText, attribute: .centerX, relatedBy: .equal, toItem: box, attribute: .centerX, multiplier: 1, constant: 0).isActive            = true
+        NSLayoutConstraint(item: btnText, attribute: .top,     relatedBy: .equal, toItem: button, attribute: .bottom,  multiplier: 1, constant: textDistance).isActive = true
+        NSLayoutConstraint(item: btnText, attribute: .centerX, relatedBy: .equal, toItem: button, attribute: .centerX, multiplier: 1, constant: 0).isActive            = true
     }
     //select function and it's animation
     open func select() {

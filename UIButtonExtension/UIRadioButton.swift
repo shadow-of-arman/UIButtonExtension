@@ -10,18 +10,18 @@ import UIKit
 
 open class UIRadioButton: UIView {
     
-    open var button : UIButton! // the outer circle which shows the Radio button it self.
-    fileprivate  var innerCircle : UIImageView! // the inner circle which filles if selected.
-    fileprivate  var btnText = UILabel() // text label if needed.
-    fileprivate  var innerConstraintWidth  : NSLayoutConstraint? //required inner circle width constraints to activate and deactivate at will.
-    fileprivate  var innerConstraintHeight : NSLayoutConstraint? //required inner circle height constraints to activate and deactivate at will.
-    fileprivate  var firstPressed = false // indicating if the button has been pressed once since initialized, used for the animation - IGNORE THIS.
-    fileprivate  var neverSelected = false
-    open var borderWidth: CGFloat! // by default the width for the border is 3.
+    open var button : UIButton! // the outer circle which shows the Radio button it self. use this to addTarget.
+    fileprivate var innerCircle : UIImageView! // the inner circle which filles if selected.
+    fileprivate var btnText = UILabel() // text label if needed.
+    fileprivate var innerConstraintWidth  : NSLayoutConstraint? //required inner circle width constraints to activate and deactivate at will.
+    fileprivate var innerConstraintHeight : NSLayoutConstraint? //required inner circle height constraints to activate and deactivate at will.
+    fileprivate var firstPressed = false // indicating if the button has been pressed once since initialized, used for the animation - IGNORE THIS.
+    open var borderWidth: CGFloat!  // by default the width for the border is 3.
+    open var cornerRadius: CGFloat! // by default, radio button is circle, you can change it if you want
     open var color: UIColor = UIColor.systemBlue // by default the color is system blue.
     open var selectedColor: UIColor = UIColor.systemBlue // the color of the inner circle
     open var fontSize: CGFloat! // text font changes dynamically based on the radio button height.
-    open var font: UIFont!
+    open var font: UIFont! // the font for when you need a text next to the button.
     open var textColor: UIColor = .black  // text color is black by default.
     open var selectedSize: CGFloat = 0.5 // change the size of the inner circle
     open var textDistance: CGFloat = 10 // change the distance between the text label and the button
@@ -67,12 +67,18 @@ open class UIRadioButton: UIView {
         //outer circle
         button.clipsToBounds = true
         button.layer.borderColor  = self.color.cgColor
-        borderWidth = button.frame.height / 9
+        if borderWidth == nil {
+            borderWidth = button.frame.height / 9
+        }
         button.layer.borderWidth  = borderWidth
-        button.layer.cornerRadius = button.bounds.width / 2
+        if cornerRadius == nil {
+            cornerRadius = button.bounds.width / 2
+        }
+        button.layer.cornerRadius = cornerRadius
         //inner circle
         innerCircle.clipsToBounds = true
-        innerCircle.backgroundColor    = self.selectedColor
+        innerCircle.backgroundColor = self.selectedColor
+        
         innerCircle.layer.cornerRadius = innerCircle.bounds.width / 2
     }
     
@@ -125,7 +131,7 @@ open class UIRadioButton: UIView {
             selectedSize = 0.1
         }
     }
-    
+//MARK: - relationship functions
     //relate buttons
     open func relate(otherUIRadioButtons: [UIRadioButton]) {
         family.append(contentsOf: otherUIRadioButtons)
@@ -148,7 +154,7 @@ open class UIRadioButton: UIView {
             x += 1
         }
     }
-    
+//MARK: Text
     //text configs:
     open func leftText(_ text: String) {
         btnText.text = text
@@ -207,6 +213,8 @@ open class UIRadioButton: UIView {
         NSLayoutConstraint(item: btnText, attribute: .top,     relatedBy: .equal, toItem: button, attribute: .bottom,  multiplier: 1, constant: textDistance).isActive = true
         NSLayoutConstraint(item: btnText, attribute: .centerX, relatedBy: .equal, toItem: button, attribute: .centerX, multiplier: 1, constant: 0).isActive            = true
     }
+    
+//MARK: - Animations
     //select function and it's animation
     fileprivate func select() {
         self.innerCircle.isHidden = false
