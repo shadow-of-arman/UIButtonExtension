@@ -3,7 +3,8 @@
 # UIButtonExtension
 
 ##preview
-![](UIButtonExtensionDemo.gif)
+
+![](Images/UIButtonExtensionDemo.gif)
 
 This package includes three components:
 
@@ -25,10 +26,11 @@ to have the common Radio Button functionality where clicking one button disables
 let radioButton1 = UIRadioButton()
 let radioButton2 = UIRadioButton()
 let radioButton3 = UIRadioButton()
+let radioButton4 = UIRadioButton()
 
-radioButton1.relate(otherUIRadioButtons: [radioButton2, radioButton3]) //now these three buttons are related and only one can be active at a time.
+radioButton1.relate(otherUIRadioButtons: [radioButton2, radioButton3]) //these four buttons are now related and only one can be active at a time.
 ```
-// add pic here
+![](Images/UIRadioButtonExample.gif)
 
 Since `UIRadioButton` is of type `UIView`, to use an `addTarget` method you have to use the `button`  inside the radioButton
 ```
