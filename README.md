@@ -2,8 +2,7 @@
 
 # UIButtonExtension
 
-##preview
-
+## preview
 ![](Images/UIButtonExtensionDemo.gif)
 
 This package includes three components:
