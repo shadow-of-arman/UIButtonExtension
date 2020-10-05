@@ -16,8 +16,9 @@ open class UIRadioButton: UIView {
     fileprivate var innerConstraintWidth  : NSLayoutConstraint? //required inner circle width constraints to activate and deactivate at will.
     fileprivate var innerConstraintHeight : NSLayoutConstraint? //required inner circle height constraints to activate and deactivate at will.
     fileprivate var firstPressed = false // indicating if the button has been pressed once since initialized, used for the animation - IGNORE THIS.
-    open var borderWidth: CGFloat!  // by default the width for the border is 3.
-    open var cornerRadius: CGFloat! // by default, radio button is circle, you can change it if you want
+    fileprivate var twoSidedRelationshipHasRan = false // meant to limit the run of this function, leave this alone!
+    open var borderWidth: CGFloat?  // by default the width for the border is 3.
+    open var cornerRadius: CGFloat? // by default, radio button is circle, you can change it if you want
     open var color: UIColor = UIColor.systemBlue // by default the color is system blue.
     open var selectedColor: UIColor = UIColor.systemBlue // the color of the inner circle
     open var fontSize: CGFloat! // text font changes dynamically based on the radio button height.
@@ -30,7 +31,6 @@ open class UIRadioButton: UIView {
     open var family: [UIRadioButton] = [] // radio buttons releated to each other
     open var isSelected = false {     // determines wether the Radio button has been selected or not.
         didSet{
-            print(isSelected)
             if isSelected == true {
                 relativeSelection()
                 select()
@@ -50,7 +50,7 @@ open class UIRadioButton: UIView {
         family.append(self)
     }
     
-    override open func layoutSubviews() {
+    override public func layoutSubviews() {
         limitFromZeroToOne()
         super.layoutSubviews()
         radioButtonConfig()
@@ -66,19 +66,13 @@ open class UIRadioButton: UIView {
         //outer circle
         button.clipsToBounds = true
         button.layer.borderColor  = self.color.cgColor
-        if borderWidth == nil {
-            borderWidth = button.frame.height / 9
-        }
-        button.layer.borderWidth  = borderWidth
-        if cornerRadius == nil {
-            cornerRadius = button.bounds.width / 2
-        }
-        button.layer.cornerRadius = cornerRadius
+        button.layer.borderWidth  = borderWidth ?? button.frame.height / 9
+        button.layer.cornerRadius = cornerRadius ?? button.bounds.width / 2
         //inner circle
         innerCircle.clipsToBounds = true
         innerCircle.backgroundColor = self.selectedColor
-        
         innerCircle.layer.cornerRadius = innerCircle.bounds.width / 2
+        twoSidedRelationship()
     }
     
     //outer circle:
@@ -140,6 +134,17 @@ open class UIRadioButton: UIView {
         }
     }
     
+    fileprivate func twoSidedRelationship() {
+        if twoSidedRelationshipHasRan == false {
+            for member in family {
+                member.relate(otherUIRadioButtons: family)
+                member.relate(otherUIRadioButtons: [self])
+            }
+        }
+        twoSidedRelationshipHasRan = true
+    }
+    
+    //switch buttons if relative is switched
     fileprivate func relativeSelection() {
         var x = 0
         if family.contains(self) {

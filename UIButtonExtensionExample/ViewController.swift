@@ -51,9 +51,9 @@ class ViewController: UIViewController {
         checkboxModern2.translatesAutoresizingMaskIntoConstraints = false
         checkboxClassic.translatesAutoresizingMaskIntoConstraints = false
         
-        NSLayoutConstraint(item: radioButtons[0], attribute: .centerY, relatedBy: .equal, toItem: self.view,        attribute: .centerY, multiplier: 0.3, constant: 0).isActive = true
-        NSLayoutConstraint(item: radioButtons[0], attribute: .centerX, relatedBy: .equal, toItem: self.view,        attribute: .centerX, multiplier: 1,   constant: 0).isActive = true
-        NSLayoutConstraint(item: radioButtons[0], attribute: .width,   relatedBy: .equal, toItem: self.view,        attribute: .width,   multiplier: 0.3, constant: 0).isActive = true
+        NSLayoutConstraint(item: radioButtons[0], attribute: .centerY, relatedBy: .equal, toItem: self.view,            attribute: .centerY, multiplier: 0.3, constant: 0).isActive = true
+        NSLayoutConstraint(item: radioButtons[0], attribute: .centerX, relatedBy: .equal, toItem: self.view,            attribute: .centerX, multiplier: 1,   constant: 0).isActive = true
+        NSLayoutConstraint(item: radioButtons[0], attribute: .width,   relatedBy: .equal, toItem: self.view,            attribute: .width,   multiplier: 0.3, constant: 0).isActive = true
         NSLayoutConstraint(item: radioButtons[0], attribute: .height,  relatedBy: .equal, toItem: self.radioButtons[0], attribute: .width,   multiplier: 1,   constant: 0).isActive = true
         
 //        radioButton.selectedSize = 0.6
@@ -82,38 +82,37 @@ class ViewController: UIViewController {
         NSLayoutConstraint(item: radioButtons[3], attribute: .height,  relatedBy: .equal, toItem: self.radioButtons[3], attribute: .width,   multiplier: 1,    constant: 0).isActive = true
         
         radioButtons[0].relate(otherUIRadioButtons: radioButtons)
-        radioButtons[1].relate(otherUIRadioButtons: radioButtons)
-        radioButtons[2].relate(otherUIRadioButtons: radioButtons)
-        radioButtons[3].relate(otherUIRadioButtons: radioButtons)
+//        radioButtons[1].relate(otherUIRadioButtons: radioButtons)
+//        radioButtons[2].relate(otherUIRadioButtons: radioButtons)
+//        radioButtons[3].relate(otherUIRadioButtons: radioButtons)
         
-        NSLayoutConstraint(item: radioButton1, attribute: .centerY, relatedBy: .equal, toItem: self.view,        attribute: .centerY, multiplier: 0.3, constant: 0).isActive = true
-        NSLayoutConstraint(item: radioButton1, attribute: .centerX, relatedBy: .equal, toItem: self.view,        attribute: .centerX, multiplier: 0.35,   constant: 0).isActive = true
-        NSLayoutConstraint(item: radioButton1, attribute: .width,   relatedBy: .equal, toItem: self.view,        attribute: .width,   multiplier: 0.3, constant: 0).isActive = true
-        NSLayoutConstraint(item: radioButton1, attribute: .height,  relatedBy: .equal, toItem: self.radioButton1, attribute: .width,   multiplier: 1,   constant: 0).isActive = true
+        NSLayoutConstraint(item: radioButton1, attribute: .centerY, relatedBy: .equal, toItem: self.view,         attribute: .centerY, multiplier: 0.3,  constant: 0).isActive = true
+        NSLayoutConstraint(item: radioButton1, attribute: .centerX, relatedBy: .equal, toItem: self.view,         attribute: .centerX, multiplier: 0.35, constant: 0).isActive = true
+        NSLayoutConstraint(item: radioButton1, attribute: .width,   relatedBy: .equal, toItem: self.view,         attribute: .width,   multiplier: 0.3,  constant: 0).isActive = true
+        NSLayoutConstraint(item: radioButton1, attribute: .height,  relatedBy: .equal, toItem: self.radioButton1, attribute: .width,   multiplier: 1,    constant: 0).isActive = true
         
-        NSLayoutConstraint(item: radioButton2, attribute: .centerY, relatedBy: .equal, toItem: self.view,            attribute: .centerY, multiplier: 0.75, constant: 0).isActive = true
-        NSLayoutConstraint(item: radioButton2, attribute: .centerX, relatedBy: .equal, toItem: self.view,            attribute: .centerX, multiplier: 0.35,    constant: 0).isActive = true
-        NSLayoutConstraint(item: radioButton2, attribute: .width,   relatedBy: .equal, toItem: self.view,            attribute: .width,   multiplier: 0.3,  constant: 0).isActive = true
+        NSLayoutConstraint(item: radioButton2, attribute: .centerY, relatedBy: .equal, toItem: self.view,         attribute: .centerY, multiplier: 0.75, constant: 0).isActive = true
+        NSLayoutConstraint(item: radioButton2, attribute: .centerX, relatedBy: .equal, toItem: self.view,         attribute: .centerX, multiplier: 0.35, constant: 0).isActive = true
+        NSLayoutConstraint(item: radioButton2, attribute: .width,   relatedBy: .equal, toItem: self.view,         attribute: .width,   multiplier: 0.3,  constant: 0).isActive = true
         NSLayoutConstraint(item: radioButton2, attribute: .height,  relatedBy: .equal, toItem: self.radioButton2, attribute: .width,   multiplier: 1,    constant: 0).isActive = true
         
-        NSLayoutConstraint(item: radioButton3, attribute: .centerY, relatedBy: .equal, toItem: self.view,            attribute: .bottom,  multiplier: 0.6, constant: 0).isActive = true
-        NSLayoutConstraint(item: radioButton3, attribute: .centerX, relatedBy: .equal, toItem: self.view,            attribute: .centerX, multiplier: 0.35,   constant: 0).isActive = true
-        NSLayoutConstraint(item: radioButton3, attribute: .width,   relatedBy: .equal, toItem: self.view,            attribute: .width,   multiplier: 0.3, constant: 0).isActive = true
-        NSLayoutConstraint(item: radioButton3, attribute: .height,  relatedBy: .equal, toItem: self.radioButton3, attribute: .width,   multiplier: 1,   constant: 0).isActive = true
+        NSLayoutConstraint(item: radioButton3, attribute: .centerY, relatedBy: .equal, toItem: self.view,         attribute: .bottom,  multiplier: 0.6,  constant: 0).isActive = true
+        NSLayoutConstraint(item: radioButton3, attribute: .centerX, relatedBy: .equal, toItem: self.view,         attribute: .centerX, multiplier: 0.35, constant: 0).isActive = true
+        NSLayoutConstraint(item: radioButton3, attribute: .width,   relatedBy: .equal, toItem: self.view,         attribute: .width,   multiplier: 0.3,  constant: 0).isActive = true
+        NSLayoutConstraint(item: radioButton3, attribute: .height,  relatedBy: .equal, toItem: self.radioButton3, attribute: .width,   multiplier: 1,    constant: 0).isActive = true
         
-        radioButton1.relate(otherUIRadioButtons: [radioButton2, radioButton1])
-        radioButton2.relate(otherUIRadioButtons: [radioButton1, radioButton2])
+        radioButton1.relate(otherUIRadioButtons: [radioButton2, radioButton3])
+        //radioButton2.relate(otherUIRadioButtons: [radioButton1, radioButton2])
 //        radioButton3.relate(otherUIRadioButtons: [radioButton1, radioButton2])
         radioButton2.button.addTarget(self, action: #selector(testing(_:)), for: .touchUpInside)
         radioButton2.color = .systemGreen
         radioButton2.selectedColor = .systemGreen
         
         radioButton3.cornerRadius = 40
-//        radioButton3.borderWidth = 50
     }
 
     @objc func testing(_ sender: UIButton) {
-        print("yep this shit is working")
+        print("execute code here")
     }
 }
 
