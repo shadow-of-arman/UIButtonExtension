@@ -22,7 +22,7 @@ The `UIRadioButton` instance will have some attributes by default. you can custo
 to have the common Radio Button functionality where clicking one button disables the rest, you can relate these buttons inside an array by using a `relate` function.
 
 ```swift
-import UIButtonExtension()
+import UIButtonExtension
 
 let radioButton1 = UIRadioButton()
 let radioButton2 = UIRadioButton()
@@ -35,7 +35,7 @@ radioButton1.relate(otherUIRadioButtons: [radioButton2, radioButton3]) //these f
 
 Since `UIRadioButton` is of type `UIView`, to use an `addTarget` method you have to use the `button`  inside the radioButton
 ```swift
-import UIButtonExtension()
+import UIButtonExtension
 
 let radioButton1 = UIRadioButton()
 
@@ -45,7 +45,7 @@ radioButton1.button.addTarget(self, action: #selector(example(_:)), for: .touchU
 The `UIRadioButton` is made of two parts, the outer circle (which is of type `Button`) and the inner circle for when it's actively selected.
 to customize aspects of the button you can use:
 ```swift
-import UIButtonExtension()
+import UIButtonExtension
 
 let radioButton = UIRadioButton()
 
@@ -57,7 +57,7 @@ radioButton.selectedSize = 0.8     //changes the ratio of the inner circle size 
 ```
 The `UIRadioButton` can take in string to show in 4 corners:
 ```swift
-import UIButtonExtension()
+import UIButtonExtension
 
 let radioButton = UIRadioButton()
 
@@ -71,7 +71,7 @@ by default the text will have a dynamic font size which adapts to the `height` o
 to change these you may use these:
 
 ```swift
-import UIButtonExtension()
+import UIButtonExtension
 
 let radioButton = UIRadioButton()
 
@@ -83,7 +83,7 @@ Each instance of the `UIRadioButton` will have a randomly generated `id` (NSUUID
 each instance is also animated by default.
 
 ```swift
-import UIButtonExtension()
+import UIButtonExtension
 
 let radioButton = UIRadioButton()
 
@@ -93,7 +93,7 @@ radioButton.animate = false    //disables the selection animation
 ```
 to understand the current status of the button to see wether it's selected or not you can use `isSelected`.
 ```swift
-import UIButtonExtension()
+import UIButtonExtension
 
 let radioButton = UIRadioButton()
 
@@ -122,7 +122,7 @@ checkboxModern.cornerRadius = 5       //changes the corner radius of the contain
 The `UICheckboxModern` can take in `String` to show in 4 corners:
 
 ```swift
-import UIButtonExtension()
+import UIButtonExtension
 
 let checkboxModern = UICheckboxModern()
 
@@ -135,7 +135,7 @@ checkboxModern.bottomText(text: String) // adds a label to the bottom of the but
 by default the text will have a dynamic font size which adapts to the `height` of the button and the default system `font` and `color`.
 to change these you may use these:
 ```swift
-import UIButtonExtension()
+import UIButtonExtension
 
 let checkboxModern = UICheckboxModern()
 
@@ -146,7 +146,7 @@ checkboxModern.textColor = .blue                        // change the color of t
 Each instance of the `UICheckboxModern` will have a randomly generated `id` (NSUUID) which you can change.
 each instance is also animated by default.
 ```swift
-import UIButtonExtension()
+import UIButtonExtension
 
 let checkboxModern = UICheckboxModern()
 
@@ -157,7 +157,7 @@ checkboxModern.animate = false    //disables the selection animation
 to understand the current status of the button to see wether it's selected or not you can use `isSelected`.
 keep in mind that `isSelected` is a read only property and only changes when the button is pressed.
 ```swift
-import UIButtonExtension()
+import UIButtonExtension
 
 let checkboxModern = UICheckboxModern()
 
@@ -174,7 +174,7 @@ when clicked in type 2, the check mark pops out of the frame a little to create 
 The `UICheckboxClassic` is made of two parts, the containing box and the checkmark for when it's actively selected.
 to customize aspects of the button you can use:
 ```swift
-import UIButtonExtension()
+import UIButtonExtension
 
 let checkboxClassic = UICheckboxClassic()
 
@@ -186,7 +186,7 @@ checkboxClassic.cornerRadius = 5       //changes the corner radius of the contai
 ```
 The `UICheckBoxClassic` can take in `String` to show in 4 corners:
 ```swift
-import UIButtonExtension()
+import UIButtonExtension
 
 let checkboxClassic = UICheckboxClassic()
 
@@ -198,7 +198,7 @@ checkboxClassic.bottomText(text: String) // adds a label to the bottom of the bu
 by default the text will have a dynamic font size which adapts to the `height` of the button and the default system `font` and `color`.
 to change these you may use these:
 ```swift
-import UIButtonExtension()
+import UIButtonExtension
 
 let checkboxClassic = UICheckboxClassic()
 
@@ -209,7 +209,7 @@ checkboxClassic.textColor = .blue                        // change the color of 
 Each instance of the `UICheckboxClassic` will have a randomly generated `id` (NSUUID) which you can change.
 each instance is also animated by default.
 ```swift
-import UIButtonExtension()
+import UIButtonExtension
 
 let checkboxClassic = UICheckboxClassic()
 
@@ -220,7 +220,7 @@ checkboxClassic.animate = false    //disables the selection animation
 to understand the current status of the button to see wether it's selected or not you can use `isSelected`.
 keep in mind that `isSelected` is a read only property and only changes when the button is pressed.
 ```swift
-import UIButtonExtension()
+import UIButtonExtension
 
 let checkboxClassic = UICheckboxClassic()
 
