@@ -13,7 +13,7 @@ This package includes three components:
 
 ## Usage
 #### Install:
-* Option 1: add `pod 'UIButtonExtension', '~> 0.2'` to your Podfile.
+* Option 1: add `pod 'UIButtonExtension', '~> 0.3'` to your Podfile.
 
 ##### UIRadioButton
 
