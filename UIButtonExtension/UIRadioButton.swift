@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+/// A control that executes your custom code in response to user intecactions and related buttons activation or deactivation.
 open class UIRadioButton: UIView {
     
     open var button : UIButton! // the outer circle which shows the Radio button it self. use this to addTarget.
@@ -116,7 +117,7 @@ open class UIRadioButton: UIView {
     }
     
     //size limit
-    func limitFromZeroToOne() {
+    fileprivate func limitFromZeroToOne() {
         if selectedSize > 1 {
             selectedSize = 1
         }
@@ -127,6 +128,8 @@ open class UIRadioButton: UIView {
     
 //MARK: - relationship functions
     //relate buttons
+    /// Relate the buttons to each other so only one can be active at a time.
+    /// - Parameter otherUIRadioButtons: An Array of other UIRadtioButtons to connect to
     open func relate(otherUIRadioButtons: [UIRadioButton]) {
         family.append(contentsOf: otherUIRadioButtons)
         if otherUIRadioButtons.contains(self) {
@@ -161,24 +164,32 @@ open class UIRadioButton: UIView {
     
 //MARK: - Text
     //text configs:
+    /// Add a label with text  to the LEFT of the button
+    /// - Parameter text: A String for the label's text
     open func leftText(_ text: String) {
         btnText.text = text
         self.addSubview(btnText)
         leftModeConstraints()
     }
     
+    /// Add a label with text to the RIGHT of the button
+    /// - Parameter text: A String for the label's text
     open func rightText(_ text: String) {
         btnText.text = text
         self.addSubview(btnText)
         rightModeConstraints()
        }
     
+    /// Add a label with text to the TOP of the button
+    /// - Parameter text: A String for the label's text
     open func topText(_ text: String) {
         btnText.text = text
         self.addSubview(btnText)
         topModeConstraints()
        }
     
+    /// Add a label with text to the BOTTOM of the button
+    /// - Parameter text: A String for the label's text
     open func bottomText(_ text: String) {
         btnText.text = text
         self.addSubview(btnText)
