@@ -3,7 +3,7 @@
 
 
 
-#WARNING ⚠️ 
+# WARNING ⚠️ 
 This was something I wrote 2 months into learning swift and iOS development and with my current knowledge, this is terrible code. it has strict rules you must follow for it to work properly, and even then you must be careful how you use it and it has it's limitations (for example using it inside tableview or collection view cells is really complicated and hard and inefficient)
 
 you *CAN* use it, but there are a lot of obstacles you will face. 
