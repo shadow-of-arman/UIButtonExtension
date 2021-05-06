@@ -1,6 +1,15 @@
 [![License](http://img.shields.io/:license-apache-blue.svg?style=flat-square)](http://www.apache.org/licenses/LICENSE-2.0.html)
 
-# UIButtonExtension
+
+
+
+#WARNING ⚠️ 
+This was something I wrote 2 months into learning swift and iOS development and with my current knowledge, this is terrible code. it has strict rules you must follow for it to work properly, and even then you must be careful how you use it and it has it's limitations (for example using it inside tableview or collection view cells is really complicated and hard and inefficient)
+
+you *CAN* use it, but there are a lot of obstacles you will face. 
+I'm leaving this repo open in case anyone has been using it and has learned how to navigate the restrictions and terrible code.
+
+I may update this to a new, proper framework in the future but there are no current plans for that right now.
 
 ## preview
 ![](Images/UIButtonExtensionDemo.gif)
